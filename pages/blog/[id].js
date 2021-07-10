@@ -2,10 +2,8 @@ import { client } from '../../libs/client';
 import styles from '../../styles/Home.module.scss';
 import { formatUtcToJapanTimeZone } from '../../variables/date.js';
 
-export default function BlogId({ blog }) {
+export default function Blog({ blog }) {
   const publishedAt = formatUtcToJapanTimeZone(blog.publishedAt);
-  console.log(blog.publishedAt)
-  console.log(publishedAt)
   const revisedAt = formatUtcToJapanTimeZone(blog.revisedAt);
   return (
     <main className={styles.main}>
