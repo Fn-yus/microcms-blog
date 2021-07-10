@@ -1,11 +1,20 @@
 import { client } from '../../libs/client';
 import styles from '../../styles/Home.module.scss';
+import { formatUtcToJapanTimeZone } from '../../variables/date.js';
 
 export default function BlogId({ blog }) {
+  const publishedAt = formatUtcToJapanTimeZone(blog.publishedAt);
+  console.log(blog.publishedAt)
+  console.log(publishedAt)
+  const revisedAt = formatUtcToJapanTimeZone(blog.revisedAt);
   return (
     <main className={styles.main}>
       <h1 className={styles.title}>{blog.title}</h1>
-      <p className={styles.publishedAt}>{blog.publishedAt}</p>
+        {
+          blog.publishedAt === blog.revisedAt ? 
+          <p className={styles.timestamp}>作成 {publishedAt}</p> : 
+          <div><p>作成 {publishedAt} </p><p className={styles.timestamp}>更新 {revisedAt}</p></div>
+        }
       <div
         dangerouslySetInnerHTML={{
           __html: `${blog.body}`,
