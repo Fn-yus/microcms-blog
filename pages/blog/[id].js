@@ -11,7 +11,7 @@ export default function Blog({ blog }) {
         {
           blog.publishedAt === blog.revisedAt ? 
           <p className={styles.timestamp}>作成 {publishedAt}</p> : 
-          <div><p>作成 {publishedAt} </p><p className={styles.timestamp}>更新 {revisedAt}</p></div>
+          <><p className={styles.timestamp}>作成 {publishedAt}<br></br>更新 {revisedAt}</p></>
         }
       <div
         dangerouslySetInnerHTML={{
