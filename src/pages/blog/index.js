@@ -1,5 +1,5 @@
-import Link from "../../src/Link";
-import { client } from "../../libs/client";
+import Link from "../../components/Link";
+import { client } from "../../libs/sdk/client";
 
 export default function Home({ blog }) {
   return (
