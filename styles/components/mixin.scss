@@ -1,0 +1,7 @@
+@use '../variable.scss' as *;
+
+@mixin overTargetBreakpoint($size) {
+  @media screen and (min-width: #{$size}) {
+    @content;
+  }
+}

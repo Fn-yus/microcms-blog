@@ -1,4 +1,4 @@
-import '../styles/globals.css'
+import '../styles/globals.scss'
 import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
