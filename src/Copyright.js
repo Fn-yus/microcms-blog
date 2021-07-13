@@ -1,14 +1,14 @@
 import React from 'react';
 import Typography from '@material-ui/core/Typography';
-import MuiLink from '@material-ui/core/Link';
+import Link from './Link';
 
 export default function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <MuiLink color="inherit" href="https://material-ui.com/">
-        Your Website
-      </MuiLink>{' '}
+      <Link color="inherit" href="https://fn-yus.vercel.app/">
+        日記みたいなもの
+      </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
