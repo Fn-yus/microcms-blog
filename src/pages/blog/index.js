@@ -18,12 +18,13 @@ export default function Home({ blog }) {
 }
 
 // データをテンプレートに受け渡す処理
-export const getServerSideProps = async () => {
+export const getStaticProps = async () => {
   const data = await client.get({ endpoint: "blog" });
 
   return {
     props: {
       blog: data.contents,
+      revalidate: 60,
     },
   };
 };

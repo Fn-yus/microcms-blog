@@ -28,7 +28,7 @@ export const getStaticPaths = async () => {
   const data = await client.get({ endpoint: "blog" });
 
   const paths = data.contents.map((content) => `/blog/${content.id}`);
-  return { paths, fallback: true };
+  return { paths, fallback: 'blocking' };
 };
 
 // データをテンプレートに受け渡す部分の処理
@@ -39,6 +39,7 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       blog: data,
+      revalidate: 60,
     },
   };
 };
