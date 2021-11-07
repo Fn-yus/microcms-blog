@@ -16,6 +16,7 @@ export default class MyDocument extends Document {
           />
         </Head>
         <body>
+          <script></script> {/* prevent FOUC */}
           <Main />
           <NextScript />
         </body>
