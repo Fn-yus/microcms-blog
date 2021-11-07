@@ -14,13 +14,13 @@ export default function Blog({ blog }) {
         <>
           <Grid container justifyContent={"flex-end"} spacing={1}>
             <Grid item><CreateIcon className={styles.svg} /></Grid>
-            <Grid item><div className={styles.timestamp}>{publishedAt}</div></Grid>
+            <Grid item><p className={styles.timestamp}>{publishedAt}</p></Grid>
           </Grid>
           {
             publishedAt !== revisedAt &&
             <Grid container justifyContent={"flex-end"} spacing={1}>
               <Grid item><UpdateIcon className={styles.svg} /></Grid>
-              <Grid item><div className={styles.timestamp}>{revisedAt}</div></Grid>
+              <Grid item><p className={styles.timestamp}>{revisedAt}</p></Grid>
             </Grid>
           }
         </>
