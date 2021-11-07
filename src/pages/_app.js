@@ -27,6 +27,7 @@ export default function MyApp(props) {
       <Head>
         <title>日記みたいなもの</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+        <meta name="description" content="日常のことを書くだけ" />
       </Head>
       <StylesProvider injectFirst>
         <ThemeProvider theme={theme}>
