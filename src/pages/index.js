@@ -1,15 +1,14 @@
-import Link from "../components/Link";
+import Link from "next/link";
+import Card from 'react-bootstrap/Card';
+import styles from '../styles/Home.module.scss';
+
 
 export default function Home() {
   return (
-    <div>
-      <ul>
-        <li>
-          <Link href='/blog/'>
-            <a>ブログ</a>
-          </Link>
-        </li>
-      </ul>
-    </div>
+    <Link href='/blog/' passHref>     
+      <Card className={styles.card}>
+        <Card.Title className={styles.cardTitle}>Blog</Card.Title>   
+      </Card>
+    </Link>
   );
 }

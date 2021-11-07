@@ -6,7 +6,7 @@ export default function Blog({ blog }) {
   const publishedAt = formatUtcToJapanTimeZone(blog.publishedAt);
   const revisedAt = formatUtcToJapanTimeZone(blog.revisedAt);
   return (
-    <main className={styles.main}>
+    <>
       <h1 className={styles.title}>{blog.title}</h1>
         {
           blog.publishedAt === blog.revisedAt ? 
@@ -19,7 +19,7 @@ export default function Blog({ blog }) {
         }}
         className={styles.post}
       />
-    </main>
+    </>
   );
 }
 
