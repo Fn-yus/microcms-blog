@@ -1,6 +1,9 @@
 import { client } from '../../libs/sdk/client';
 import styles from '../../styles/Home.module.scss';
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
+import CreateIcon from '@material-ui/icons/Create';
+import UpdateIcon from '@material-ui/icons/Update';
+import { Grid } from '@material-ui/core';
 
 export default function Blog({ blog }) {
   const publishedAt = formatUtcToJapanTimeZone(blog.publishedAt);
@@ -8,17 +11,20 @@ export default function Blog({ blog }) {
   return (
     <>
       <h1 className={styles.title}>{blog.title}</h1>
-        {
-          blog.publishedAt === blog.revisedAt ? 
-          <p className={styles.timestamp}>作成 {publishedAt}</p> : 
-          <><p className={styles.timestamp}>作成 {publishedAt}<br></br>更新 {revisedAt}</p></>
-        }
-      <div
-        dangerouslySetInnerHTML={{
-          __html: `${blog.body}`,
-        }}
-        className={styles.post}
-      />
+        <>
+          <Grid container justifyContent={"flex-end"} spacing={1}>
+            <Grid item><CreateIcon className={styles.svg} /></Grid>
+            <Grid item><div className={styles.timestamp}>{publishedAt}</div></Grid>
+          </Grid>
+          {
+            publishedAt !== revisedAt &&
+            <Grid container justifyContent={"flex-end"} spacing={1}>
+              <Grid item><UpdateIcon className={styles.svg} /></Grid>
+              <Grid item><div className={styles.timestamp}>{revisedAt}</div></Grid>
+            </Grid>
+          }
+        </>
+      <div dangerouslySetInnerHTML={{__html: `${blog.body}`,}} className={styles.post} />
     </>
   );
 }

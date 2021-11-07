@@ -18,6 +18,9 @@ export default function Home({ blog }) {
           </Link>
         </Col>
       ))}
+      {
+        blog.length % 2 === 1 && <Col style={{visibility: 'hidden'}} /> // ブログの数が奇数の場合はレイアウトを整える
+      }
     </Row>
   );
 }
