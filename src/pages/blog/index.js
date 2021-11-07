@@ -1,27 +1,31 @@
 import Link from "next/link";
-import Card from 'react-bootstrap/Card';
-import { Row, Col } from "react-bootstrap";
+import Card from '@material-ui/core/Card';
+import CardContent from '@material-ui/core/CardContent';
+import Typography from '@material-ui/core/Typography';
+import Grid from '@material-ui/core/Grid';
+import CreateIcon from '@material-ui/icons/Create';
 import { client } from "../../libs/sdk/client";
 import styles from '../../styles/Home.module.scss';
+import { formatUtcToJapanTimeZone } from '../../utils/date.js';
 
 export default function Home({ blog }) {
   return (
-    <Row xs={1} lg={2}>
+    <>
       {blog.map((blog) => (
-        <Col key={blog.id} className={styles.col}>
-          <Link href={`/blog/${blog.id}`}  passHref>  
-            <Card className={styles.card}>
-              <Card.Body>
-                <Card.Title className={styles.cardTitle}>{blog.title}</Card.Title>   
-              </Card.Body>
-            </Card>
-          </Link>
-        </Col>
+        <Link href={`/blog/${blog.id}`}  key={blog.id} passHref>  
+          <Card className={styles.blogCard} variant="outlined">
+            <CardContent>
+              <Typography className={styles.cardTitle} variant="h5" component="h2">{blog.title}</Typography>
+              <Typography variant="body2" component="p">{blog.body.replace(/<[^>]+>/g, '')}</Typography>
+              <Grid container justifyContent={"flex-end"} spacing={1} className={styles.timestampBox}>
+                <Grid item><CreateIcon className={styles.svg} /></Grid>
+                <Grid item><Typography className={styles.timestamp} component="p">{formatUtcToJapanTimeZone(blog.publishedAt)}</Typography></Grid>
+              </Grid>
+            </CardContent>
+          </Card>
+        </Link>
       ))}
-      {
-        blog.length % 2 === 1 && <Col style={{visibility: 'hidden'}} /> // ブログの数が奇数の場合はレイアウトを整える
-      }
-    </Row>
+    </>
   );
 }
 
