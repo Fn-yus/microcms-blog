@@ -96,20 +96,14 @@
 }
 
 .card:hover,
-.card:focus {
+.card:focus,
+.card:active {
   @include mx.overTargetBreakpoint($lg) {
     color: #0070f3;
     border-color: #0070f3;
     cursor: pointer; /* マウスカーソルを手の形にする */
     opacity: 0.6; /* ボタンの透明度を60%にする */
   }
-}
-
-.card:active {
-  color: #0070f3;
-  border-color: #0070f3;
-  cursor: pointer; /* マウスカーソルを手の形にする */
-  opacity: 0.6; /* ボタンの透明度を60%にする */
 }
 
 .card h2 {
