@@ -8,7 +8,7 @@ export default function Copyright() {
     <Typography variant="body2" color="textSecondary" className={styles.copyright}>
       {'Copyright © '}
       <Link color="inherit" href="https://fn-yus.vercel.app/">
-        日記みたいなもの
+        雑な文章、雑文
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

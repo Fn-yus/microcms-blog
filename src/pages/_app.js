@@ -25,7 +25,7 @@ export default function MyApp(props) {
   return (
     <React.Fragment>
       <Head>
-        <title>日記みたいなもの</title>
+        <title>雑な文章、雑文</title>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <meta name="description" content="日常のことを書くだけ" />
       </Head>
@@ -35,7 +35,7 @@ export default function MyApp(props) {
           <CssBaseline />
           <main className={styles.main}> 
             <Link href={"/"} passHref>
-              <h1 className={styles.mainTitle}>日記みたいなもの</h1>
+              <h1 className={styles.mainTitle}>雑な文章、雑文</h1>
             </Link>
             <Component {...pageProps} />
             <Copyright />
