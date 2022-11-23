@@ -35,7 +35,11 @@ export const getStaticProps = async () => {
 
   return {
     props: {
-      blog: data.contents,
+      blog: data.contents.sort((a, b) =>{
+        const timeA = new Date(a.publishedAt).getTime();
+        const timeB = new Date(b.publishedAt).getTime();
+      return timeB - timeA;
+      }),
     },
     revalidate: 5,
   };
