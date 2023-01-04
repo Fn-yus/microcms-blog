@@ -1,5 +1,8 @@
 @use 'variable.scss' as *;
 @use 'components/mixin.scss' as mx;
+@import "../../node_modules/bootstrap/scss/functions";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
 
 .container {
   min-height: 100vh;
@@ -233,4 +236,8 @@
 .timestampBox {
   margin-bottom: 0;
   margin-top: 2rem;
+}
+
+.caption {
+  color: #696969;
 }
