@@ -7,6 +7,7 @@ import CreateIcon from '@material-ui/icons/Create';
 import { client } from "../../libs/sdk/client";
 import styles from '../../styles/Home.module.scss';
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
+import { Data } from '../../interfaces'
 
 export default function Home({ blog }) {
   return (
@@ -31,7 +32,7 @@ export default function Home({ blog }) {
 
 // データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
-  const data = await client.get({ endpoint: "blog" });
+  const data: Data = await client.get({ endpoint: "blog" });
 
   return {
     props: {
