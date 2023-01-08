@@ -16,7 +16,7 @@ export default function Home({ blog }) {
         <Link href={`/blog/${blog.id}`}  key={blog.id} passHref>  
           <Card className={styles.blogCard} variant="outlined">
             <CardContent>
-              <Typography className={styles.cardTitle} variant="h5" component="h2">{blog.title}</Typography>
+              <Typography className={styles.title} variant="h5" component="h2">{blog.title}</Typography>
               <Typography variant="body2" component="p">{blog.body.replace(/<[^>]+>/g, '')}</Typography>
               <Grid container justifyContent={"flex-end"} spacing={1} className={styles.timestampBox}>
                 <Grid item><CreateIcon className={styles.svg} /></Grid>
