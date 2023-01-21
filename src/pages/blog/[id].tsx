@@ -80,7 +80,6 @@ export const getStaticProps = async (context) => {
   const backPageBlogId = targetBlogIndex !== 0 ? blogIds[targetBlogIndex - 1] : null;
   const nextPageBlogId = targetBlogIndex !== blogIds.length -1 ? blogIds[targetBlogIndex + 1] : null;
  
-  console.log(blogIds, targetBlogIndex, backPageBlogId, nextPageBlogId)
   return {
     props: {
       targetBlog: targetBlog,
