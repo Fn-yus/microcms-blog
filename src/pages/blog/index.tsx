@@ -1,18 +1,24 @@
 import Link from "next/link";
+
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import CreateIcon from '@material-ui/icons/Create';
+
 import { client } from "../../libs/sdk/client";
+
 import styles from '../../styles/Home.module.scss';
+
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
+import { sortAllBlogs} from '../../utils/blog.js';
+
 import { Data } from '../../interfaces'
 
-export default function Home({ blog }) {
+export default function Home({ blogs }) {
   return (
     <>
-      {blog.map((blog) => (
+      {blogs.map((blog) => (
         <Link href={`/blog/${blog.id}`}  key={blog.id} passHref>  
           <Card className={styles.blogCard} variant="outlined">
             <CardContent>
@@ -32,15 +38,11 @@ export default function Home({ blog }) {
 
 // データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
-  const data: Data = await client.get({ endpoint: "blog" });
+  const blogs: Data = await client.get({ endpoint: "blog" });
 
   return {
     props: {
-      blog: data.contents.sort((a, b) =>{
-        const timeA = new Date(a.publishedAt).getTime();
-        const timeB = new Date(b.publishedAt).getTime();
-      return timeB - timeA;
-      }),
+      blogs: sortAllBlogs(blogs)
     },
     revalidate: 5,
   };

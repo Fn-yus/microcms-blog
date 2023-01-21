@@ -267,3 +267,35 @@
 .caption {
   color: #696969;
 }
+
+.footer {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.footerHoverArea:hover {
+  cursor: pointer;
+  .homeIcon  {
+    opacity: 0.6;
+  }
+  .chevronIcon {
+    opacity: 0.6;
+  }
+}
+
+.hiddenfooterHoverArea {
+  visibility: hidden;;
+}
+
+.homeIcon {
+  font-size: 2.5rem;
+  margin: 1rem;
+}
+
+.chevronIcon {
+  font-size: 3rem;
+  margin: 1rem;
+}
