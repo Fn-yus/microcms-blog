@@ -14,9 +14,18 @@ import { sortAllBlogs } from '../../utils/blog.js';
 
 import { Data } from '../../interfaces'
 
-export default function Blog({ targetBlog, backPageBlogId, nextPageBlogId }) {
+export default function Blog({ blogs, targetBlogId }) {
+  
+  const targetBlog = blogs.find((blog) => blog.id === targetBlogId);
+  const blogIds = blogs.map((blog) => {return blog.id});
+
+  const targetBlogIndex = blogIds.indexOf(targetBlogId);
+  const backPageBlogId = targetBlogIndex !== 0 ? blogIds[targetBlogIndex - 1] : null;
+  const nextPageBlogId = targetBlogIndex !== blogIds.length -1 ? blogIds[targetBlogIndex + 1] : null;
+
   const publishedAt = formatUtcToJapanTimeZone(targetBlog.publishedAt);
   const revisedAt = formatUtcToJapanTimeZone(targetBlog.revisedAt);
+
   return (
     <>
       <h1 className={styles.title}>{targetBlog.title}</h1>
@@ -69,22 +78,12 @@ export const getStaticPaths = async () => {
 
 // データをテンプレートに受け渡す部分の処理
 export const getStaticProps = async (context) => {
-  const targetBlogId = context.params.id;
-
   const blogs: Data = await client.get({endpoint: "blog"});
-  const targetBlog = await client.get({ endpoint: "blog", contentId: targetBlogId });
-
-  const blogIds = sortAllBlogs(blogs).map((blog) => {return blog.id});
-
-  const targetBlogIndex = blogIds.indexOf(targetBlogId);
-  const backPageBlogId = targetBlogIndex !== 0 ? blogIds[targetBlogIndex - 1] : null;
-  const nextPageBlogId = targetBlogIndex !== blogIds.length -1 ? blogIds[targetBlogIndex + 1] : null;
  
   return {
     props: {
-      targetBlog: targetBlog,
-      backPageBlogId: backPageBlogId,
-      nextPageBlogId: nextPageBlogId,
+     blogs: sortAllBlogs(blogs),
+     targetBlogId: context.params.id,
     },
     revalidate: 5
   };
