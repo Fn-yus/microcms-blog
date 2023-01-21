@@ -2,7 +2,6 @@
 @use 'components/mixin.scss' as mx;
 @import "../../node_modules/bootstrap/scss/functions";
 @import "../../node_modules/bootstrap/scss/variables";
-@import "../../node_modules/bootstrap/scss/mixins";
 
 .container {
   min-height: 100vh;
@@ -38,25 +37,6 @@
   flex-grow: 1;
 }
 
-.title a {
-  color: #0070f3;
-  text-decoration: none;
-}
-
-.title a:hover,
-.title a:focus,
-.title a:active {
-  text-decoration: underline;
-}
-
-.title {
-  margin: 0;
-  line-height: 1.15;
-  font-size: 2rem;
-  font-weight: lighter;
-}
-
-.title,
 .description {
   text-align: center;
 }
@@ -93,9 +73,9 @@
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 30%;
-  @include mx.overTargetBreakpoint($lg) {
+  @include mx.overTargetBreakpoint($sm) {
    width: 20%
-   }
+  }
 }
 
 .card:hover,
@@ -143,10 +123,6 @@
    }
 }
 
-.title {
-  margin-bottom: 20px;
-}
-
 .timestamp {
   margin-bottom: 1rem;
   white-space: nowrap;
@@ -186,11 +162,28 @@
   position: relative; 
   font-weight: normal;
   text-align: center;
-  font-size: 1.0rem;
-  @include mx.overTargetBreakpoint($lg) {
+  font-size: 1.3rem;
+  margin-bottom: 20px;
+  @include mx.overTargetBreakpoint($sm) {
     font-size: 1.5rem;
   }
 }
+
+.title a {
+  color: #0070f3;
+  text-decoration: none;
+  :hover :focus :active {
+    text-decoration: underline;
+  }
+}
+
+
+//.title a:hover,
+//.title a:focus,
+//.title a:active {
+//  text-decoration: underline;
+//}
+
 
 @include mx.overTargetBreakpoint($lg) {
 /* PCのみアンダーバーを表示 */
@@ -256,7 +249,7 @@
   width: auto;
   @include mx.overTargetBreakpoint($lg) {
     width: 45%
-   }
+  }
 }
 
 .timestampBox {
