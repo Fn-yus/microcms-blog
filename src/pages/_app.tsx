@@ -10,6 +10,7 @@ import theme from '../commons/theme';
 import styles from "../styles/Home.module.scss"
 import Copyright from '../components/Copyright';
 import Link from 'next/link';
+import { Analytics } from '@vercel/analytics/react';
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;
@@ -38,6 +39,7 @@ export default function MyApp(props) {
               <h1 className={styles.mainTitle}>Jikba</h1>
             </Link>
             <Component {...pageProps} />
+            <Analytics />
             <Copyright />
           </main>
         </ThemeProvider>
