@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
-import Grid from '@material-ui/core/Grid';
-import CreateIcon from '@material-ui/icons/Create';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import CreateIcon from '@mui/icons-material/Create';
 
 import { client } from "../../libs/sdk/client";
 
@@ -16,24 +16,22 @@ import { sortAllBlogs} from '../../utils/blog.js';
 import { Data } from '../../interfaces'
 
 export default function Home({ blogs }) {
-  return (
-    <>
-      {blogs.map((blog) => (
-        <Link href={`/blog/${blog.id}`}  key={blog.id} passHref>  
-          <Card className={styles.blogCard} variant="outlined">
-            <CardContent>
-              <Typography className={styles.title} variant="h5" component="h2">{blog.title}</Typography>
-              <Typography variant="body2" component="p">{blog.body.replace(/<[^>]+>/g, '')}</Typography>
-              <Grid container justifyContent={"flex-end"} spacing={1} className={styles.timestampBox}>
-                <Grid item><CreateIcon className={styles.svg} /></Grid>
-                <Grid item><Typography className={styles.timestamp} component="p">{formatUtcToJapanTimeZone(blog.publishedAt)}</Typography></Grid>
-              </Grid>
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
-    </>
-  );
+  return <>
+    {blogs.map((blog) => (
+      <Link href={`/blog/${blog.id}`}  key={blog.id} passHref>  
+        <Card className={styles.blogCard} variant="outlined">
+          <CardContent>
+            <Typography className={styles.title} variant="h5" component="h2">{blog.title}</Typography>
+            <Typography variant="body2" component="p">{blog.body.replace(/<[^>]+>/g, '')}</Typography>
+            <Grid container justifyContent={"flex-end"} spacing={1} className={styles.timestampBox}>
+              <Grid item><CreateIcon className={styles.svg} /></Grid>
+              <Grid item><Typography className={styles.timestamp} component="p">{formatUtcToJapanTimeZone(blog.publishedAt)}</Typography></Grid>
+            </Grid>
+          </CardContent>
+        </Card>
+      </Link>
+    ))}
+  </>;
 }
 
 // データをテンプレートに受け渡す処理

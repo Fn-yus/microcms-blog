@@ -1,4 +1,4 @@
-import { Title } from "@material-ui/icons";
+import { Title } from "@mui/icons-material";
 import styles from '../styles/Home.module.scss';
 
 

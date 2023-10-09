@@ -1,11 +1,11 @@
-import { Grid } from '@material-ui/core';
+import { Grid } from '@mui/material';
 import Link from "next/link";
 
-import CreateIcon from '@material-ui/icons/Create';
-import UpdateIcon from '@material-ui/icons/Update';
-import ChevronRightIcon from '@material-ui/icons/ChevronRight';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import HomeIcon from '@material-ui/icons/Home';
+import CreateIcon from '@mui/icons-material/Create';
+import UpdateIcon from '@mui/icons-material/Update';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import HomeIcon from '@mui/icons-material/Home';
 
 import { client } from '../../libs/sdk/client';
 import styles from '../../styles/Home.module.scss';
