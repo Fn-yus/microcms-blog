@@ -13,7 +13,6 @@ import { Analytics } from '@vercel/analytics/react';
 
 
 declare module '@mui/material/styles' {
-  // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
 
