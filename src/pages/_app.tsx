@@ -4,7 +4,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
 import { ThemeProvider, Theme, StyledEngineProvider } from '@mui/material/styles';
-import { StylesProvider } from '@mui/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import theme from '../commons/theme';
 import styles from "../styles/Home.module.scss"
@@ -13,7 +12,7 @@ import Link from 'next/link';
 import { Analytics } from '@vercel/analytics/react';
 
 
-declare module '@mui/styles/defaultTheme' {
+declare module '@mui/material/styles' {
   // eslint-disable-next-line @typescript-eslint/no-empty-interface
   interface DefaultTheme extends Theme {}
 }
@@ -37,22 +36,20 @@ export default function MyApp(props) {
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
         <meta name="description" content="日常のことを書くだけ" />
       </Head>
-      <StylesProvider injectFirst>
-        <StyledEngineProvider injectFirst>
-          <ThemeProvider theme={theme}>
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <main className={styles.main}> 
-              <Link href={"/"} passHref>
-                <h1 className={styles.mainTitle}>Jikba</h1>
-              </Link>
-              <Component {...pageProps} />
-              <Analytics />
-              <Copyright />
-            </main>
-          </ThemeProvider>
-        </StyledEngineProvider>
-      </StylesProvider>
+       <StyledEngineProvider injectFirst>
+         <ThemeProvider theme={theme}>
+           {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+           <CssBaseline />
+           <main className={styles.main}> 
+             <Link href={"/"} passHref>
+               <h1 className={styles.mainTitle}>Jikba</h1>
+             </Link>
+             <Component {...pageProps} />
+             <Analytics />
+             <Copyright />
+           </main>
+         </ThemeProvider>
+       </StyledEngineProvider>
     </React.Fragment>
   );
 }
