@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from 'next/image'
 import Typography from '@mui/material/Typography';
 import styles from '../styles/Home.module.scss';
-import LocalSize from '../../public/topImg.jpg';
 
 export default function Home() {
   return <>
