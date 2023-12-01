@@ -26,48 +26,46 @@ export default function Blog({ blogs, targetBlogId }) {
   const publishedAt = formatUtcToJapanTimeZone(targetBlog.publishedAt);
   const revisedAt = formatUtcToJapanTimeZone(targetBlog.revisedAt);
 
-  return (
-    <>
-      <h1 className={styles.title}>{targetBlog.title}</h1>
-        <>
-          <Grid container justifyContent={"flex-end"} spacing={1}>
-            <Grid item><CreateIcon className={styles.svg} /></Grid>
-            <Grid item><p className={styles.timestamp}>{publishedAt}</p></Grid>
-          </Grid>
-          {
-            publishedAt !== revisedAt &&
-            <Grid container justifyContent={"flex-end"} spacing={1}>
-              <Grid item><UpdateIcon className={styles.svg} /></Grid>
-              <Grid item><p className={styles.timestamp}>{revisedAt}</p></Grid>
-            </Grid>
-          }
-        </>
-      <div dangerouslySetInnerHTML={{__html: `${targetBlog.body}`,}} className={styles.post} />
-
-      <div className={styles.footer}>
+  return <>
+    <h1 className={styles.title}>{targetBlog.title}</h1>
+      <>
+        <Grid container justifyContent={"flex-end"} spacing={1}>
+          <Grid item><CreateIcon className={styles.svg} /></Grid>
+          <Grid item><p className={styles.timestamp}>{publishedAt}</p></Grid>
+        </Grid>
         {
-          <Link href={`/blog/${backPageBlogId}`} passHref>
-            <div className={`${!!backPageBlogId ? styles.footerHoverArea : styles.hiddenfooterHoverArea}`}>
-              <ChevronLeftIcon className={styles.chevronIcon} />
-            </div>
-          </Link>
+          publishedAt !== revisedAt &&
+          <Grid container justifyContent={"flex-end"} spacing={1}>
+            <Grid item><UpdateIcon className={styles.svg} /></Grid>
+            <Grid item><p className={styles.timestamp}>{revisedAt}</p></Grid>
+          </Grid>
         }
-        <Link href="/" passHref>
-          <div className={styles.footerHoverArea}>
-            <HomeIcon className={styles.homeIcon} />
+      </>
+    <div dangerouslySetInnerHTML={{__html: `${targetBlog.body}`,}} className={styles.post} />
+
+    <div className={styles.footer}>
+      {
+        <Link href={`/blog/${backPageBlogId}`} passHref legacyBehavior>
+          <div className={`${!!backPageBlogId ? styles.footerHoverArea : styles.hiddenfooterHoverArea}`}>
+            <ChevronLeftIcon className={styles.chevronIcon} />
           </div>
         </Link>
-        
-        {
-          <Link href={`/blog/${nextPageBlogId}`} passHref>
-            <div className={`${!!nextPageBlogId ? styles.footerHoverArea : styles.hiddenfooterHoverArea}`}>
-              <ChevronRightIcon className={styles.chevronIcon} />
-            </div>
-          </Link>
-        }
-      </div>
-    </>
-  );
+      }
+      <Link href="/" passHref legacyBehavior>
+        <div className={styles.footerHoverArea}>
+          <HomeIcon className={styles.homeIcon} />
+        </div>
+      </Link>
+      
+      {
+        <Link href={`/blog/${nextPageBlogId}`} passHref legacyBehavior>
+          <div className={`${!!nextPageBlogId ? styles.footerHoverArea : styles.hiddenfooterHoverArea}`}>
+            <ChevronRightIcon className={styles.chevronIcon} />
+          </div>
+        </Link>
+      }
+    </div>
+  </>;
 }
 
 // 静的生成のためのパスを指定

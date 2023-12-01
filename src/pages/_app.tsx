@@ -41,7 +41,7 @@ export default function MyApp(props) {
            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
            <CssBaseline />
            <main className={styles.main}> 
-             <Link href={"/"} passHref>
+             <Link href={"/"} passHref legacyBehavior>
                <h1 className={styles.mainTitle}>Jikba</h1>
              </Link>
              <Component {...pageProps} />
