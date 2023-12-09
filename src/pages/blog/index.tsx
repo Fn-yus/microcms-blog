@@ -11,7 +11,8 @@ import CreateIcon from '@mui/icons-material/Create';
 import styles from '../../styles/Home.module.scss';
 
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
-import { sortAllBlogs} from '../../utils/blog.js';
+import { sortAllBlogs } from '../../utils/blog.js';
+import { currentUrl } from "../../utils/url";
 
 // import { Data } from '../../interfaces'
 
@@ -36,7 +37,7 @@ export default function Home({ blogs }) {
 
 // データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
-  const blogs = await fetch(`${process.env.VERCEL_URL}/api/blogs`).then((res) => res.json());
+  const blogs = await fetch(`${currentUrl}/api/blogs`).then((res) => res.json());
 
   return {
     props: {
