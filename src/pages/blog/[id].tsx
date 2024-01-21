@@ -11,7 +11,6 @@ import { client } from '../../libs/sdk/client';
 import styles from '../../styles/Home.module.scss';
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
 import { sortAllBlogs } from '../../utils/blog.js';
-import { currentUrl } from "../../utils/url";
 
 // import { Data } from '../../interfaces'
 
@@ -77,8 +76,8 @@ export const getStaticPaths = async () => {
 
 // データをテンプレートに受け渡す部分の処理
 export const getStaticProps = async (context) => {
-  const blogs = await fetch(`${currentUrl}/api/blogs`).then((res) => res.json());
-
+  const blogs = await fetch(`${process.env.VERCEL_URL}/api/blogs`).then((res) => res.json());
+ 
   return {
     props: {
      blogs: sortAllBlogs(blogs),
