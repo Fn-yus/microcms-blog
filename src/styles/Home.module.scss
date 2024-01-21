@@ -177,13 +177,9 @@
   }
 }
 
-
-//.title a:hover,
-//.title a:focus,
-//.title a:active {
-//  text-decoration: underline;
-//}
-
+.linkTitle {
+  margin-bottom: 3rem;
+}
 
 @include mx.overTargetBreakpoint($lg) {
 /* PCのみアンダーバーを表示 */
@@ -258,6 +254,7 @@
 }
 
 .caption {
+  margin-top: 0.75rem;
   color: #696969;
 }
 

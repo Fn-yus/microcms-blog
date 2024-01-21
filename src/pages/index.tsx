@@ -9,6 +9,6 @@ export default function Home() {
       <Typography className={`${styles.title} ${styles.linkTitle}`}>Blog</Typography>
     </Link>
     <Image src="/topImg.jpg" width={1600} height={1000} priority={true} loading="eager" sizes="100vw" style={{width: '100%', height: 'auto',}} alt="初冠雪直後の白山の風景" />
-    <p className={styles.caption}>2020/10/16 初冠雪の白山</p>
+    <Typography className={styles.caption}>2020/10/16 初冠雪の白山</Typography>
   </>;
 }
