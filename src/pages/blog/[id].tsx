@@ -14,6 +14,7 @@ import { sortAllBlogs } from '../../utils/blog.js';
 import { RichEditorField } from '../../components/RichEditorField';
 import { currentUrl } from "../../utils/url";
 import { RichEditorField } from '../../components/RichEditorField';
+import { currentUrl } from "../../utils/url";
 
 // import { Data } from '../../interfaces'
 
