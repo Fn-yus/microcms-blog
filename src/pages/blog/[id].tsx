@@ -11,6 +11,7 @@ import { client } from '../../libs/sdk/client';
 import styles from '../../styles/Home.module.scss';
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
 import { sortAllBlogs } from '../../utils/blog.js';
+import { RichEditorField } from '../../components/RichEditorField';
 
 import { Data } from '../../interfaces'
 
@@ -41,7 +42,8 @@ export default function Blog({ blogs, targetBlogId }) {
           </Grid>
         }
       </>
-    <div dangerouslySetInnerHTML={{__html: `${targetBlog.body}`,}} className={styles.post} />
+
+    {RichEditorField(targetBlog.body)}
 
     <div className={styles.footer}>
       {
