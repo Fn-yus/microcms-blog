@@ -6,14 +6,15 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import CreateIcon from '@mui/icons-material/Create';
 
-import { client } from "../../libs/sdk/client";
+// import { client } from "../../libs/sdk/client";
 
 import styles from '../../styles/Home.module.scss';
 
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
-import { sortAllBlogs} from '../../utils/blog.js';
+import { sortAllBlogs } from '../../utils/blog.js';
+import { currentUrl } from "../../utils/url";
 
-import { Data } from '../../interfaces'
+// import { Data } from '../../interfaces'
 
 export default function Home({ blogs }) {
   return <>
@@ -25,7 +26,7 @@ export default function Home({ blogs }) {
             <Typography variant="body2" component="p">{blog.body.replace(/<[^>]+>/g, '')}</Typography>
             <Grid container justifyContent={"flex-end"} spacing={1} className={styles.timestampBox}>
               <Grid item><CreateIcon className={styles.svg} /></Grid>
-              <Grid item><Typography className={styles.timestamp} component="p">{formatUtcToJapanTimeZone(blog.publishedAt)}</Typography></Grid>
+              <Grid item><Typography className={styles.timestamp} component="p">{formatUtcToJapanTimeZone(blog.createdAt)}</Typography></Grid>
             </Grid>
           </CardContent>
         </Card>
@@ -36,7 +37,7 @@ export default function Home({ blogs }) {
 
 // データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
-  const blogs: Data = await client.get({ endpoint: "blog" });
+  const blogs = await fetch(`${currentUrl}/api/blogs`).then((res) => res.json());
 
   return {
     props: {

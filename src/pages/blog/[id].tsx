@@ -12,8 +12,9 @@ import styles from '../../styles/Home.module.scss';
 import { formatUtcToJapanTimeZone } from '../../utils/date.js';
 import { sortAllBlogs } from '../../utils/blog.js';
 import { RichEditorField } from '../../components/RichEditorField';
+import { currentUrl } from "../../utils/url";
 
-import { Data } from '../../interfaces'
+// import { Data } from '../../interfaces'
 
 export default function Blog({ blogs, targetBlogId }) {
   
@@ -24,21 +25,21 @@ export default function Blog({ blogs, targetBlogId }) {
   const backPageBlogId = targetBlogIndex !== 0 ? blogIds[targetBlogIndex - 1] : null;
   const nextPageBlogId = targetBlogIndex !== blogIds.length -1 ? blogIds[targetBlogIndex + 1] : null;
 
-  const publishedAt = formatUtcToJapanTimeZone(targetBlog.publishedAt);
-  const revisedAt = formatUtcToJapanTimeZone(targetBlog.revisedAt);
+  const createdAt = formatUtcToJapanTimeZone(targetBlog.createdAt);
+  const updatedAt = formatUtcToJapanTimeZone(targetBlog.updatedAt);
 
   return <>
     <h1 className={styles.title}>{targetBlog.title}</h1>
       <>
         <Grid container justifyContent={"flex-end"} spacing={1}>
           <Grid item><CreateIcon className={styles.svg} /></Grid>
-          <Grid item><p className={styles.timestamp}>{publishedAt}</p></Grid>
+          <Grid item><p className={styles.timestamp}>{createdAt}</p></Grid>
         </Grid>
         {
-          publishedAt !== revisedAt &&
+          createdAt !== updatedAt &&
           <Grid container justifyContent={"flex-end"} spacing={1}>
             <Grid item><UpdateIcon className={styles.svg} /></Grid>
-            <Grid item><p className={styles.timestamp}>{revisedAt}</p></Grid>
+            <Grid item><p className={styles.timestamp}>{updatedAt}</p></Grid>
           </Grid>
         }
       </>
@@ -78,8 +79,8 @@ export const getStaticPaths = async () => {
 
 // データをテンプレートに受け渡す部分の処理
 export const getStaticProps = async (context) => {
-  const blogs: Data = await client.get({endpoint: "blog"});
- 
+  const blogs = await fetch(`${currentUrl}/api/blogs`).then((res) => res.json());
+
   return {
     props: {
      blogs: sortAllBlogs(blogs),
