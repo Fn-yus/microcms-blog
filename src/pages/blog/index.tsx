@@ -36,7 +36,7 @@ export default function Home({ blogs }) {
 
 // データをテンプレートに受け渡す処理
 export const getStaticProps = async () => {
-  const blogs = await fetch(`${process.env.VERCEL_URL}/api/blogs`).then((res) => res.json());
+  const blogs = await fetch(`${process.env.API_BASE_URL}/api/blogs`).then((res) => res.json());
 
   return {
     props: {

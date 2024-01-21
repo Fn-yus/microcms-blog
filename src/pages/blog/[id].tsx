@@ -76,7 +76,7 @@ export const getStaticPaths = async () => {
 
 // データをテンプレートに受け渡す部分の処理
 export const getStaticProps = async (context) => {
-  const blogs = await fetch(`${process.env.VERCEL_URL}/api/blogs`).then((res) => res.json());
+  const blogs = await fetch(`${process.env.API_BASE_URL}/api/blogs`).then((res) => res.json());
  
   return {
     props: {
