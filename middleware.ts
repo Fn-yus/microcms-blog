@@ -3,7 +3,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export const config = {
-  matcher: ["/admin"]
+  matcher: ['/admin']
 };
 
 export default function middleware(req: NextRequest) {
