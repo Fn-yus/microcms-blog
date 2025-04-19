@@ -4,7 +4,7 @@ import parse, { Element } from 'html-react-parser';
 import styles from '../styles/Home.module.scss'
 
 export const RichEditorField = (content) => {
-  return (!content) ? null : <div className={styles.post}>{parse(content, { replace })}</div>;
+  return (!content) ? null : <div className={styles.post} lang='ja'>{parse(content, { replace })}</div>;
 };
 
 const replace = (domNode) => {
