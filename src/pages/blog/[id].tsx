@@ -16,7 +16,7 @@ import { RichEditorField } from '../../components/RichEditorField';
 import { Data } from '../../interfaces'
 
 export default function Blog({ blogs, targetBlogId }) {
-  
+
   const targetBlog = blogs.find((blog) => blog.id === targetBlogId);
   const blogIds = blogs.map((blog) => {return blog.id});
 
@@ -58,7 +58,7 @@ export default function Blog({ blogs, targetBlogId }) {
           <HomeIcon className={styles.homeIcon} />
         </div>
       </Link>
-      
+
       {
         <Link href={`/blog/${nextPageBlogId}`} passHref legacyBehavior>
           <div className={`${!!nextPageBlogId ? styles.footerHoverArea : styles.hiddenfooterHoverArea}`}>
@@ -79,12 +79,11 @@ export const getStaticPaths = async () => {
 // データをテンプレートに受け渡す部分の処理
 export const getStaticProps = async (context) => {
   const blogs: Data = await client.get({endpoint: "blog"});
- 
+
   return {
     props: {
      blogs: sortAllBlogs(blogs),
      targetBlogId: context.params.id,
     },
-    revalidate: 5
   };
 };

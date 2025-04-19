@@ -18,7 +18,7 @@ import { Data } from '../../interfaces'
 export default function Home({ blogs }) {
   return <>
     {blogs.map((blog) => (
-      <Link href={`/blog/${blog.id}`} key={blog.id} passHref legacyBehavior>  
+      <Link href={`/blog/${blog.id}`} key={blog.id} passHref legacyBehavior>
         <Card className={styles.blogCard} variant="outlined">
           <CardContent>
             <Typography className={styles.title} variant="h5" component="h2">{blog.title}</Typography>
@@ -42,6 +42,5 @@ export const getStaticProps = async () => {
     props: {
       blogs: sortAllBlogs(blogs)
     },
-    revalidate: 5,
   };
 };
